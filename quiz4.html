@@ -26,44 +26,44 @@
                 <li><input type="radio" name="answer" value="D"> 4. 납부하다</li><br>
             </ul>
         </div>
-        <button id="submit">결과 보기</button>
+        <button id="submit">제출하기</button>
     </div>
 </div>
 
 <script>
-       document.getElementById('submit'.addEventListener('click', function() {
-            const options = document.getElementsByName('answer');
-            let selectedAnswer;
+    document.getElementById('submit').addEventListener('click', function() {
+        const options = document.getElementsByName('answer');
+        let selectedAnswer;
 
-            // 사용자가 선택한 답을 확인
-            for (let i = 0; i < options.length; i++) {
-                if (options[i].checked) {
-                    selectedAnswer = options[i].value;
-                    break;
-                }
+        // 사용자가 선택한 답을 확인
+        for (let i = 0; i < options.length; i++) {
+            if (options[i].checked) {
+                selectedAnswer = options[i].value;
+                break;
             }
+        }
 
-            // 사용자가 답을 선택하지 않은 경우
-            if (!selectedAnswer) {
-                alert('답을 선택해 주세요!');
-                return;
-            }
+        // 사용자가 답을 선택하지 않은 경우
+        if (!selectedAnswer) {
+            alert('답을 선택해 주세요!');
+            return;
+        }
 
-            // 로컬 스토리지에서 점수 확인 (firstCorrect 제거)
-            let score = parseInt(localStorage.getItem('score')) || 0;
+        // 로컬 스토리지에서 점수 확인
+        let score = parseInt(localStorage.getItem('score')) || 0;
 
-            // 정답 확인 ('A' 또는 'B'가 정답)
-            if (selectedAnswer === 'C' || selectedAnswer === 'D') {
-                score += 1; // 정답 시 1점 추가
-                localStorage.setItem('score', score); // 점수 저장
-                alert('정답입니다!');
-                
-                // correct1.html로 이동
-                window.location.href = 'correct4.html';
-            } else {
-                alert('다시 한번 풀어볼까요?');
-            }
-        });
+        // 정답 확인 ('C' 또는 'D'가 정답)
+        if (selectedAnswer === 'C' || selectedAnswer === 'D') {
+            score += 1; // 정답 시 1점 추가
+            localStorage.setItem('score', score); // 점수 저장
+            alert('정답입니다!');
+            
+            // correct4.html로 이동
+            window.location.href = 'correct4.html';
+        } else {
+            alert('다시 한번 풀어볼까요?');
+        }
+    });
 </script>
 
 <!-- 하단 이미지 -->
@@ -73,7 +73,3 @@
 
 </body>
 </html>
-
-
-
-
